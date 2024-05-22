@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #6c2a2a;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Label layoutX="221.0" layoutY="45.0" onMouseClicked="#loginUser" prefHeight="74.0" prefWidth="157.0" text="LOGIN" textFill="#232625">
+         <font>
+            <Font size="51.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textUserName" layoutX="226.0" layoutY="200.0" />
+      <Label layoutX="132.0" layoutY="203.0" prefHeight="18.0" prefWidth="66.0" text="Username" textAlignment="RIGHT" textFill="WHITE" />
+      <PasswordField fx:id="textPassword" layoutX="226.0" layoutY="264.0" />
+      <Label layoutX="132.0" layoutY="268.0" text="Password" textFill="WHITE" />
+      <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="224.0" layoutY="315.0" onAction="#addUser" prefHeight="24.0" prefWidth="150.0" text="Register" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Hyperlink>
+      <TextField fx:id="passwordViewText" layoutX="226.0" layoutY="277.0" visible="false" />
+      <CheckBox fx:id="passwordButtonLogin" layoutX="422.0" layoutY="281.0" mnemonicParsing="false" onAction="#managePassword" text="show" textFill="WHITE" />
+   </children>
+</AnchorPane>

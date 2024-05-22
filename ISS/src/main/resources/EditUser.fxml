@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #aa4b4b" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+   <children>
+      <Label alignment="CENTER_RIGHT" layoutX="68.0" layoutY="56.0" prefHeight="59.0" prefWidth="142.0" text="Name:" textAlignment="RIGHT" textFill="#ffe7d4">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="69.0" layoutY="287.0" prefHeight="59.0" prefWidth="142.0" text="Phone:" textAlignment="RIGHT" textFill="#ffe7d4">
+         <font>
+            <Font size="28.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutX="69.0" layoutY="109.0" prefHeight="66.0" prefWidth="141.0" text="CNP:" textAlignment="RIGHT" textFill="#ffe7d4">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="NameText" layoutX="215.0" layoutY="56.0" prefHeight="59.0" prefWidth="276.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="CNPText" layoutX="215.0" layoutY="112.0" prefHeight="59.0" prefWidth="276.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </TextField>
+      <Button fx:id="addButton" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="40.0" prefWidth="87.0" text="Register" />
+      <Button layoutX="500.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="87.0" text="Back" />
+      <ImageView fitHeight="150.0" fitWidth="96.0" layoutX="504.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+
+      </ImageView>
+      <Label alignment="CENTER_RIGHT" layoutX="68.0" layoutY="174.0" prefHeight="59.0" prefWidth="142.0" text="Username:" textAlignment="RIGHT" textFill="#ffe7d4">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameText" layoutX="214.0" layoutY="170.0" prefHeight="59.0" prefWidth="276.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="passwordText" layoutX="273.0" layoutY="229.0" prefHeight="40.0" prefWidth="218.0" visible="false">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="69.0" layoutY="228.0" prefHeight="59.0" prefWidth="142.0" text="Password:" textAlignment="RIGHT" textFill="#ffe7d4">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passwordField" layoutX="214.0" layoutY="229.0" prefHeight="59.0" prefWidth="276.0" />
+      <CheckBox fx:id="passwordButton" layoutX="504.0" layoutY="245.0" mnemonicParsing="false" onAction="#managePassword" text="show" />
+      <PasswordField fx:id="phoneField" layoutX="215.0" layoutY="288.0" prefHeight="59.0" prefWidth="276.0" />
+   </children>
+</AnchorPane>
