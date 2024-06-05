@@ -44,10 +44,13 @@ public class AddBookController {
         }
 
 
-
-        service.addBook(isbn, author, title, Integer.parseInt(publicationYear), BookStatus.Available, Genre.valueOf(genre));
-        MessageAlert.showMessage(null, Alert.AlertType.INFORMATION, "Added", "Book added successfully");
-
+        try {
+            service.addBook(isbn, author, title, Integer.parseInt(publicationYear), BookStatus.Available, Genre.valueOf(genre));
+            MessageAlert.showMessage(null, Alert.AlertType.INFORMATION, "Added", "Book added successfully");
+        }
+        catch (Exception e){
+            MessageAlert.showErrorMessage(null,"Something wrong");
+        }
         Stage stage = (Stage) textISBN.getScene().getWindow();
         stage.close();
     }
