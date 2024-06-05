@@ -2,6 +2,7 @@ package domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
 
 @javax.persistence.Entity
@@ -78,5 +79,17 @@ public class BookBorrowing extends Entity {
 
     public void setBooks(Set<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BookBorrowing that)) return false;
+        return Objects.equals(getBooks(), that.getBooks());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBooks());
     }
 }

@@ -13,7 +13,7 @@ public class Entity  {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    protected String id;
 
     public String getId() {
         return id;

@@ -36,7 +36,7 @@
                </image>
             </ImageView>
             <Label fx:id="usernameLabel" layoutX="80.0" layoutY="134.0" text="Username" />
-            <Label layoutX="93.0" layoutY="151.0" text="Profile" />
+            <Label layoutX="93.0" layoutY="151.0" onMouseClicked="#goToProfile" text="Profile" />
             <Label layoutX="87.0" layoutY="168.0" onMouseClicked="#logOut" text="Log out" />
          </children>
       </Pane>

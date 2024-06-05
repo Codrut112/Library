@@ -49,4 +49,34 @@ public class BookRateRepository implements IRepositoryBookAction<BookRate> {
             return List.of();
         }
     }
+
+    @Override
+    public Optional<BookRate> update(BookRate entity) {
+        try(var session = sessionFactory.openSession()){
+            var transaction = session.beginTransaction();
+            session.update(entity);
+            transaction.commit();
+            return Optional.of(entity);
+        }
+        catch (Exception e){
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<BookRate> delete(String id) {
+        var bookRateOpt = findOne(id);
+        if(bookRateOpt.isEmpty()){
+            return Optional.empty();
+        }
+        try(var session = sessionFactory.openSession()){
+            var transaction = session.beginTransaction();
+            session.delete(bookRateOpt.get());
+            transaction.commit();
+            return bookRateOpt;
+        }
+        catch (Exception e){
+            return Optional.empty();
+        }
+    }
 }

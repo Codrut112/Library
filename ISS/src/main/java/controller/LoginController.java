@@ -37,7 +37,7 @@ public class LoginController implements Controller {
         try {
             Person user = service.verifyUser(username, password);
 
-            if (user != null) {
+            if (user.getClass().getName().contains("Subscriber")) {
 
                 Stage mainStage = new Stage();
                 mainStage.setTitle("Main");
@@ -51,6 +51,26 @@ public class LoginController implements Controller {
                 mainStage.setResizable(true);
                 // Pass the service and user to the controller
                 MainController userController = loader.getController();
+                userController.setService(service, user);
+                service.addObserver(userController);
+                System.out.println("gata sa afiseze");
+                mainStage.show();
+                System.out.println("dada");
+
+            }
+            else if(user.getClass().getName().contains("Librarian")){
+                Stage mainStage = new Stage();
+                mainStage.setTitle("Admin");
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/admin.fxml"));
+                AnchorPane newRoot = (AnchorPane) loader.load();
+                Scene scene = new Scene(newRoot);
+
+                mainStage.setScene(scene);
+                mainStage.setResizable(true);
+                // Pass the service and user to the controller
+                AdminController userController = loader.getController();
                 userController.setService(service, user);
                 service.addObserver(userController);
                 System.out.println("gata sa afiseze");

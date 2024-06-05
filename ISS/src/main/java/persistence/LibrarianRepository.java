@@ -59,5 +59,18 @@ public class LibrarianRepository implements IRepositoryPerson<Librarian> {
         }
     }
 
+    @Override
+    public Optional<Person> findByUsername(String username) {
+        try (var session = sessionFactory.openSession()) {
+            String hql = "FROM Librarian WHERE username = :username";
+            var query = session.createQuery(hql, Librarian.class);
+            query.setParameter("username", username);
+            var subscriber = query.uniqueResult();
+            return Optional.ofNullable(subscriber);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
 
 }

@@ -1,4 +1,5 @@
 package controller;
+import java.io.IOException;
 import java.util.List;
 
 import domain.Book;
@@ -6,11 +7,14 @@ import domain.Person;
 import domain.Subscriber;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -62,6 +66,7 @@ public class MainController implements Observer,Controller{
 
         ImageView imageView = null;
         try {
+            System.out.println(book.getIsbn() + ".jpg" );
             Image image = new Image(book.getIsbn() + ".jpg");
             imageView = new ImageView(image);
             imageView.setFitWidth(200);
@@ -132,5 +137,18 @@ public class MainController implements Observer,Controller{
     @Override
     public void update() {
         loadBooks();
+    }
+
+    public void goToProfile(MouseEvent mouseEvent) throws IOException {
+        //Go to profile
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/profile.fxml"));
+        AnchorPane newRoot = (AnchorPane) loader.load();
+        Scene scene = new Scene(newRoot);
+        //load the profile on the current window
+        Stage currentStage = (Stage) usernameLabel.getScene().getWindow();
+        currentStage.setScene(scene);
+        ProfileController profileController = loader.getController();
+        profileController.setService(service, user);
     }
 }

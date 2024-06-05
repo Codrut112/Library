@@ -35,6 +35,15 @@ public class Book extends Entity {
         super();
     }
 
+    public Book(String isbn, String author, String title, int publicationYear, BookStatus status, Genre genre) {
+        this.isbn = isbn;
+        this.author = author;
+        this.title = title;
+        this.publicationYear = publicationYear;
+        this.status = status;
+        this.genre = genre;
+    }
+
     // Getters and setters
 
     public String getIsbn() {
@@ -127,7 +136,7 @@ public class Book extends Entity {
         if (b) {
             status = BookStatus.Available;
         } else {
-            status = BookStatus.Borrowed;
+            status = BookStatus.Reserved;
         }
     }
 }

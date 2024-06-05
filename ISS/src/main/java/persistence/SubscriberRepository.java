@@ -8,14 +8,12 @@ import org.hibernate.Transaction;
 
 import java.util.Optional;
 
-public class SubscriberRepository implements IRepositoryPerson<Subscriber>{
+public class SubscriberRepository implements IRepositoryPerson<Subscriber> {
     private SessionFactory sessionFactory;
 
     public SubscriberRepository(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-
 
 
     @Override
@@ -33,13 +31,10 @@ public class SubscriberRepository implements IRepositoryPerson<Subscriber>{
                 transaction.rollback();
             }
 
-           // e.printStackTrace();
+            // e.printStackTrace();
             return Optional.empty();
         }
     }
-
-
-
 
 
     @Override
@@ -61,6 +56,19 @@ public class SubscriberRepository implements IRepositoryPerson<Subscriber>{
             var query = session.createQuery(hql, Subscriber.class);
             query.setParameter("username", username);
             query.setParameter("password", password);
+            var subscriber = query.uniqueResult();
+            return Optional.ofNullable(subscriber);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<Person> findByUsername(String username) {
+        try (var session = sessionFactory.openSession()) {
+            String hql = "FROM Subscriber WHERE username = :username";
+            var query = session.createQuery(hql, Subscriber.class);
+            query.setParameter("username", username);
             var subscriber = query.uniqueResult();
             return Optional.ofNullable(subscriber);
         } catch (Exception e) {
