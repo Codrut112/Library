@@ -1,4 +1,5 @@
 package controller;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import service.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainController implements Observer,Controller{
+public class MainController implements Observer, Controller {
     @FXML
     private Label usernameLabel;
 
@@ -39,7 +40,6 @@ public class MainController implements Observer,Controller{
     private Person user;
     private List<Book> selectedBooks = new ArrayList<>();
     private HashMap<Book, Label> bookLabels = new HashMap<>();
-
 
 
     public void setService(Service service, Person user) {
@@ -66,7 +66,7 @@ public class MainController implements Observer,Controller{
 
         ImageView imageView = null;
         try {
-            System.out.println(book.getIsbn() + ".jpg" );
+            System.out.println(book.getIsbn() + ".jpg");
             Image image = new Image(book.getIsbn() + ".jpg");
             imageView = new ImageView(image);
             imageView.setFitWidth(200);
@@ -148,7 +148,10 @@ public class MainController implements Observer,Controller{
         //load the profile on the current window
         Stage currentStage = (Stage) usernameLabel.getScene().getWindow();
         currentStage.setScene(scene);
+
         ProfileController profileController = loader.getController();
+        service.addObserver(profileController);
         profileController.setService(service, user);
+
     }
 }

@@ -111,6 +111,7 @@ public class Service implements Observable {
         repositoryBook.update(selectedBook);
         reservation.setStatus(BorrowStatus.Acticve);
         repositoryBookBorrowing.update(reservation);
+        notifyall();
     }
 
     public Person findUserByUsername(String username){
@@ -172,5 +173,6 @@ public class Service implements Observable {
             });
             repositoryBookBorrowing.delete(borrow.getId());
         });
+        notifyall();
     }
 }

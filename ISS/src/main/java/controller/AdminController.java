@@ -117,7 +117,7 @@ public class AdminController implements Controller, Observer {
         }
         service.borrowBook(reservation,book);
         MessageAlert.showMessage(null, Alert.AlertType.INFORMATION, "Borrowed", "Book borrowed");
-        loadData();
+        //loadData();
     }
 
     @FXML
